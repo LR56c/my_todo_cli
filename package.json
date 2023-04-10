@@ -1,0 +1,28 @@
+{
+  "name": "my_todo_cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.7",
+    "@semantic-release/npm": "^10.0.3",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "semantic-release": "^21.0.1"
+  },
+  "devDependencies": {
+    "turbo": "1.8.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LR56c/my_todo_cli.git"
+  }
+}

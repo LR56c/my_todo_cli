@@ -26,8 +26,10 @@ jobs:
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
-      - name: Turbo
-        run: turbo run lint test build
+      - name: Build
+        run: pnpm build
+      - name: Test
+        run: pnpm test
       - name: Release
         env:
           CI: true

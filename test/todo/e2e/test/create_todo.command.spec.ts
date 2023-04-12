@@ -1,6 +1,7 @@
-import { Test } from '@nestjs/testing';
-import { CommandModule, CommandModuleTest } from 'nestjs-command';
-import { AppModule } from 'app-cli/dist/index';
+import {Test} from '@nestjs/testing';
+import {CommandModule, CommandModuleTest} from 'nestjs-command';
+import {AppModule} from "todo-cli";
+
 describe('AppModule', () => {
     let commandModule: CommandModuleTest;
 
@@ -16,7 +17,7 @@ describe('AppModule', () => {
 
     it('should create todo', async () => {
         const commandText = 'create:user <username>';
-        const args = { username: 'Foo', group: 'Bar', saber: false };
+        const args = {username: 'Foo', group: 'Bar', saber: false};
 
         // TODO: mockear repo, usecase. validar que se ejecuta y valida
         const user = await commandModule.execute(commandText, args);

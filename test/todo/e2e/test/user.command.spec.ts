@@ -1,6 +1,6 @@
 import { Test } from '@nestjs/testing';
 import { CommandModule, CommandModuleTest } from 'nestjs-command';
-import { AppModule } from 'app-cli';
+import {AppModule} from "todo-cli";
 describe('AppModule', () => {
   let commandModule: CommandModuleTest;
 

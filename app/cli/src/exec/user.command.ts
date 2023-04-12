@@ -1,6 +1,5 @@
 import { Command, Positional, Option } from 'nestjs-command';
-import { Injectable } from '@nestjs/common';
-
+import {Injectable} from '@nestjs/common';
 @Injectable()
 export class UserCommand {
   @Command({

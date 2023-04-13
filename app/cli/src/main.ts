@@ -4,12 +4,12 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.createApplicationContext(AppModule, {
-    logger: ['error', 'warn']
+    logger: ['error', 'warn'],
   });
 
   try {
     await app.select(CommandModule).get(CommandService).exec();
-    await app.enableShutdownHooks()
+    await app.enableShutdownHooks();
     await app.close();
   } catch (error) {
     console.error(error);

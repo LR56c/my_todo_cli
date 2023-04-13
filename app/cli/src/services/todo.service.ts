@@ -1,21 +1,20 @@
-import {Err, Ok, Result} from "oxide.ts";
+import { Err, Ok, Result } from 'oxide.ts';
 import {
   Todo,
   TodoCompleted,
   TodoId,
   TodoRepository,
-  TodoTitle
-} from "todo-domain/dist";
-import {CreatedAt, UpdatedAt} from "app-shared/dist";
+  TodoTitle,
+} from 'todo-domain/dist';
+import { CreatedAt, UpdatedAt } from 'app-shared/dist';
 import { PrismaService } from 'nestjs-prisma';
-import {Injectable} from "@nestjs/common";
+import { Injectable } from '@nestjs/common';
 
 // better duplicate code than bad abstraction
 // Create other TodoService for other ORM
 @Injectable()
 export class TodoService implements TodoRepository {
-  constructor(private context: PrismaService) {
-  }
+  constructor(private context: PrismaService) {}
 
   async createTodo(newTodo: Todo): Promise<Result<boolean, Error>> {
     try {
@@ -25,8 +24,8 @@ export class TodoService implements TodoRepository {
           title: newTodo.todoTitle.value,
           completed: newTodo.todoCompleted.value,
           createdAt: newTodo.createdAt.value,
-          updatedAt: newTodo.updatedAt.value
-        }
+          updatedAt: newTodo.updatedAt.value,
+        },
       });
       return Promise.resolve(Ok(true));
     } catch (e) {
@@ -38,8 +37,8 @@ export class TodoService implements TodoRepository {
     try {
       this.context.todo.delete({
         where: {
-          id: id.value
-        }
+          id: id.value,
+        },
       });
       return Promise.resolve(Ok(true));
     } catch (e) {
@@ -51,8 +50,8 @@ export class TodoService implements TodoRepository {
     try {
       const prismaTodo = await this.context.todo.findUnique({
         where: {
-          id: id.value
-        }
+          id: id.value,
+        },
       });
 
       const todo = Todo.create(
@@ -60,7 +59,7 @@ export class TodoService implements TodoRepository {
         new TodoTitle(prismaTodo.title),
         new TodoCompleted(prismaTodo.completed),
         new CreatedAt(prismaTodo.createdAt),
-        new UpdatedAt(prismaTodo.updatedAt, prismaTodo.createdAt)
+        new UpdatedAt(prismaTodo.updatedAt, prismaTodo.createdAt),
       );
 
       return Promise.resolve(Ok(todo));
@@ -79,7 +78,7 @@ export class TodoService implements TodoRepository {
           new TodoTitle(prismaTodo.title),
           new TodoCompleted(prismaTodo.completed),
           new CreatedAt(prismaTodo.createdAt),
-          new UpdatedAt(prismaTodo.updatedAt, prismaTodo.createdAt)
+          new UpdatedAt(prismaTodo.updatedAt, prismaTodo.createdAt),
         );
       });
 
@@ -93,13 +92,13 @@ export class TodoService implements TodoRepository {
     try {
       this.context.todo.update({
         where: {
-          id: newTodo.todoId.value
+          id: newTodo.todoId.value,
         },
         data: {
           title: newTodo.todoTitle.value,
           completed: newTodo.todoCompleted.value,
-          updatedAt: newTodo.updatedAt.value
-        }
+          updatedAt: newTodo.updatedAt.value,
+        },
       });
       return Promise.resolve(Ok(true));
     } catch (e) {

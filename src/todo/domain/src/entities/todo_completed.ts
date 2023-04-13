@@ -1,10 +1,10 @@
-import {z} from "zod";
+import { z } from 'zod';
 export class TodoCompleted {
   constructor(public readonly value: boolean) {
-    this.ensureBool()
+    this.ensureBool();
   }
 
   private ensureBool(): void {
-    z.boolean().parse(this.value)
+    z.boolean().parse(this.value);
   }
 }

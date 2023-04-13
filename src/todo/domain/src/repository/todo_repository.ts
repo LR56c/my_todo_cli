@@ -1,6 +1,6 @@
-import {Todo} from "../entities/todo";
-import {Result} from "oxide.ts";
-import {TodoId} from "../entities/todo_id";
+import { Todo } from '../entities/todo';
+import { Result } from 'oxide.ts';
+import { TodoId } from '../entities/todo_id';
 
 export interface TodoRepository {
   createTodo(newTodo: Todo): Promise<Result<boolean, Error>>;

@@ -2,14 +2,17 @@
   "name": "todo-domain",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "app-shared": "workspace:*",
     "oxide.ts": "^1.1.0",
     "zod": "^3.21.4",
-    "zod-validation-error": "^1.3.0",
-    "todo-shared": "workspace:*"
+    "zod-validation-error": "^1.3.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.1"
   }
 }

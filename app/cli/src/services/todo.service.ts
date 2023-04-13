@@ -1,8 +1,13 @@
-import {TodoRepository} from "todo-domain/src/repository/todo_repository";
 import {Err, Ok, Result} from "oxide.ts";
 import {PrismaService} from "./prisma.service";
-import {Todo, TodoCompleted, TodoId, TodoTitle} from "todo-domain";
-import {CreatedAt, UpdatedAt} from "app-shared/src";
+import {
+  Todo,
+  TodoCompleted,
+  TodoId,
+  TodoRepository,
+  TodoTitle
+} from "todo-domain/dist";
+import {CreatedAt, UpdatedAt} from "app-shared/dist";
 export class TodoService implements TodoRepository{
   constructor(private context: PrismaService) {
     console.log("TodoService.constructor");

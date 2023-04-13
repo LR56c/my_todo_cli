@@ -1,14 +1,16 @@
 import {Module} from '@nestjs/common';
-import {AppService} from './app.service';
+import {AppService} from './services/app.service';
 import {CommandModule} from 'nestjs-command';
-import {UserCommand} from './exec/user.command';
+import {UserCommand} from './commands/exec/user.command';
 import {ConfigModule} from "@nestjs/config";
-import cf from '../config'
+import cf from '../config';
+import {TodoService} from "./services/todo.service";
+import {PrismaService} from "./services/prisma.service";
 
 @Module({
-    imports: [CommandModule, ConfigModule.forRoot({load: [cf]})],
-    providers: [AppService, UserCommand],
-    exports: [AppModule],
+  imports: [CommandModule, ConfigModule.forRoot({load: [cf]})],
+  providers: [AppService, UserCommand, PrismaService, TodoService],
+  exports: [AppModule],
 })
 export class AppModule {
 }

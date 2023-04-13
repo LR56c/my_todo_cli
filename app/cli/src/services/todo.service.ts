@@ -1,5 +1,4 @@
 import {Err, Ok, Result} from "oxide.ts";
-import {PrismaService} from "./prisma.service";
 import {
   Todo,
   TodoCompleted,
@@ -8,11 +7,14 @@ import {
   TodoTitle
 } from "todo-domain/dist";
 import {CreatedAt, UpdatedAt} from "app-shared/dist";
-export class TodoService implements TodoRepository{
+import { PrismaService } from 'nestjs-prisma';
+import {Injectable} from "@nestjs/common";
+
+// better duplicate code than bad abstraction
+// Create other TodoService for other ORM
+@Injectable()
+export class TodoService implements TodoRepository {
   constructor(private context: PrismaService) {
-    console.log("TodoService.constructor");
-    console.log('todoService.context ' + this.context);
-    console.log('-----------');
   }
 
   async createTodo(newTodo: Todo): Promise<Result<boolean, Error>> {
@@ -40,8 +42,7 @@ export class TodoService implements TodoRepository{
         }
       });
       return Promise.resolve(Ok(true));
-    }
-    catch (e) {
+    } catch (e) {
       return Promise.resolve(Err(e));
     }
   }
@@ -63,8 +64,7 @@ export class TodoService implements TodoRepository{
       );
 
       return Promise.resolve(Ok(todo));
-    }
-    catch (e) {
+    } catch (e) {
       return Promise.resolve(Err(e));
     }
   }
@@ -84,8 +84,7 @@ export class TodoService implements TodoRepository{
       });
 
       return Promise.resolve(Ok(todos));
-    }
-    catch (e) {
+    } catch (e) {
       return Promise.resolve(Err(e));
     }
   }
@@ -103,8 +102,7 @@ export class TodoService implements TodoRepository{
         }
       });
       return Promise.resolve(Ok(true));
-    }
-    catch (e) {
+    } catch (e) {
       return Promise.resolve(Err(e));
     }
   }

@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
-import {CreateTodo} from "./create/create_todo";
 
 @Module({
-  exports: [CreateTodo],
+  exports: [TodoApplicationModule],
 })
 export class TodoApplicationModule {}

@@ -5,7 +5,7 @@ export class UpdatedAt {
     this.ensureValidDate()
   }
 
-  private ensureValidDate(): void {
+  ensureValidDate(): void {
     z.date().min(this.createdAt).parse(this.value)
   }
 }

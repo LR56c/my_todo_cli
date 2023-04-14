@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class UserCommand {
   @Command({
+
     command: 'create:user <username>',
     describe: 'create a user',
   })
@@ -28,6 +29,7 @@ export class UserCommand {
     })
     saber: boolean,
   ) {
+
     return {
       username,
       group,

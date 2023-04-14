@@ -28,6 +28,8 @@ jobs:
         run: pnpm install
       - name: Build
         run: pnpm build
+      - name: db generate
+        run: pnpm db:generate
       - name: Test
         run: pnpm test
       - name: Release
